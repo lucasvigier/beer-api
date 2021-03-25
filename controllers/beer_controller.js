@@ -7,9 +7,9 @@ exports.getAll = (req, res) => {
         .catch(err => res.status(500).json(err))
 }
 
-// GET beers by a specific country
-exports.getByCountry = (req, res) => {
-    Beer.findAll({where: {country: req.query.country}})
+// GET beers by the beer id
+exports.getById = (req, res) => {
+    Beer.findAll({where: {id: req.query.id}})
         .then(beer => res.status(200).json(beer))
         .catch(err => res.status(500).json(err))
 }
@@ -21,16 +21,16 @@ exports.getByName = (req, res) => {
         .catch(err => res.status(500).json(err))
 }
 
-// GET beers by the beer id
-exports.getById = (req, res) => {
-    Beer.findAll({where: {id: req.query.id}})
+// GET beers by the brewer name
+exports.getByBrewerName = (req, res) => {
+    Beer.findAll({where: {brewer: req.query.brewer}})
         .then(beer => res.status(200).json(beer))
         .catch(err => res.status(500).json(err))
 }
 
-// GET beers by the brewer name
-exports.getByBrewerName = (req, res) => {
-    Beer.findAll({where: {brewer: req.query.brewer}})
+// GET beers by a specific country
+exports.getByCountry = (req, res) => {
+    Beer.findAll({where: {country: req.query.country}})
         .then(beer => res.status(200).json(beer))
         .catch(err => res.status(500).json(err))
 }
