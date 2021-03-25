@@ -46,12 +46,12 @@ describe("[TEST] GET (id)", () => {
 describe("[TEST] GET (name)", () => {
     it("name: Lucifer", (done) => {
         chai.request(app)
-            .get("/api/beer/name?name=Lucifer")
+            .get("/api/beer/name?name=Bridal Ale 2005")
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.be.a('Array');
                 res.body.length.should.not.eq(0);
-                res.body.hasObjectWithPropertyValue('name', "Lucifer").should.equal(true);
+                res.body.hasObjectWithPropertyValue('name', "Bridal Ale 2005").should.equal(true);
                 done();
             });
     });
