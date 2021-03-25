@@ -60,3 +60,16 @@ describe("[TEST] GET beers by id", () => {
             });
     });
 })
+
+describe("[TEST] GET all by name", () => {
+    it("beers with the name", (done) => {
+        chai.request(app)
+            .get("/api/beer")
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.a('Array');
+                res.body.length.should.not.be.eq(0);
+                done();
+            });
+    });
+});
