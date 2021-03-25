@@ -1,4 +1,4 @@
-id;brewery_id;name;Alcohol By Volume;Category;Brewer;Address1;City;State;Country
+id;brewery_id;name;alcohol;category;brewer;address;city;state;country
 6;1385;Winter Warmer;5.1999998093;British Ale;Youngs & Company Brewery;26 Osiers Road;London;;England
 47;901;Cardinal Pale Ale;0.0;North American Ale;Nebraska Brewing Company;7474 Towne Center Parkway #101;Papillion;Nebraska;United States
 51;432;Saison Imperiale;8.5;;De Proef Brouwerij;Doornzelestraat 20;Lochristi-Hijfte;Oost-Vlaanderen;Belgium
