@@ -1,11 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const breweriesRouter = require('./routes/breweries');
+const breweriesController = require('../controllers/breweries_controller');
 
-
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-    res.send('respond with a resource');
-});
+/* GET breweries listing. */
+router.get('/', breweriesController.getAll);
 
 module.exports = router;

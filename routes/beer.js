@@ -1,11 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const beerRouter = require('./routes/beer');
+const beerController = require('../controllers/beer_controller');
 
-
-/* GET home page. */
-router.get('/', function (req, res, next) {
-    res.render('index', {title: 'Express'});
-});
+/* GET beers listing. */
+router.get('/', beerController.getAll);
+router.get('/country', beerController.getByCountry);
+router.get('/name', beerController.getByName);
 
 module.exports = router;
