@@ -9,7 +9,7 @@ exports.getAll = (req, res) => {
 
 // GET all breweries by id
 exports.getById = (req, res) => {
-    Breweries.findAll({where: {id: req.query.id}})
+    Breweries.findAll({where: {id: req.params.id}})
         .then(breweries => res.status(200).json(breweries))
         .catch(err => res.status(500).json(err))
 }
