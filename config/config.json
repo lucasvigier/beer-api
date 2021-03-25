@@ -1,0 +1,6 @@
+{
+  "development": {
+    "dialect": "sqlite",
+    "storage": "beer_db.sqlite"
+  }
+}
