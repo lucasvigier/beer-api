@@ -13,6 +13,22 @@ Array.prototype.hasObjectWithPropertyValue = function (key, value) {
     return false;
 };
 
+// FUNCTION to verify if an array has an object with a specific attribute and equal or less than a value
+Array.prototype.hasObjectWithPropertyValueLessThan = function (key, value) {
+    for (let i = 0; i < this.length; i++) {
+        if (this[i][key] <= value) return true;
+    }
+    return false;
+};
+
+// FUNCTION to verify if an array has an object with a specific attribute and equal or less than a value
+Array.prototype.hasObjectWithPropertyValueGreaterThan = function (key, value) {
+    for (let i = 0; i < this.length; i++) {
+        if (this[i][key] >= value) return true;
+    }
+    return false;
+};
+
 // TEST if getting all the beers works
 describe("[TEST] GET (beers)", () => {
     it("return all", (done) => {
@@ -84,5 +100,66 @@ describe("[TEST] GET (country)", () => {
                 res.body.hasObjectWithPropertyValue('country', "Belgium").should.equal(true);
                 done();
             });
+    });
+});
+
+// TEST if getting all the beers under a specific alcohol content value works
+describe("[TEST] GET (under alcohol content)", () => {
+    it("alcohol: <= 5", (done) => {
+        chai.request(app)
+            .get("/api/beer/underAlcoholContent?alcohol=5")
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.a('Array');
+                res.body.length.should.not.eq(0);
+                res.body.hasObjectWithPropertyValueLessThan('alcohol', 5).should.equal(true);
+                done();
+            });
+    });
+});
+
+// TEST if getting all the beers above a specific alcohol content value works
+describe("[TEST] GET (above alcohol content)", () => {
+    it("alcohol: >= 6", (done) => {
+        chai.request(app)
+            .get("/api/beer/aboveAlcoholContent?alcohol=6")
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.a('Array');
+                res.body.length.should.not.eq(0);
+                res.body.hasObjectWithPropertyValueGreaterThan('alcohol', 6).should.equal(true);
+                done();
+            });
+    });
+});
+
+// TEST if adding a beer works
+describe("[TEST] PUT (add beer)", () => {
+    it("id: 154, name: Leffe, alcohol: 5.15, brewer: Abbaye of Leffe, country: Germany", (done) => {
+        chai.request(app)
+            .put("/api/beer/addBeer")
+            .send({id: 154, name: 'Leffe', alcohol: 5.15, brewer: 'Abbaye of Leffe', country: 'Germany'})
+            .end(((err, res) => {
+                res.should.have.status(201);
+                res.body.should.be.a('Object');
+                res.body.should.have.property('id', 154);
+                res.body.should.have.property('name', "Leffe");
+                res.body.should.have.property('alcohol').eq(5.15);
+                res.body.should.have.property('brewer', "Abbaye of Leffe");
+                res.body.should.have.property('country', "Germany");
+                done();
+            }));
+    });
+});
+
+// TEST if deleting a beer works
+describe("[TEST] DELETE (delete beer)", () => {
+    it("id: 154", (done) => {
+        chai.request(app)
+            .delete("/api/beer/deleteBeer/154")
+            .end(((err, res) => {
+                res.should.have.status(200);
+                done();
+            }));
     });
 });
