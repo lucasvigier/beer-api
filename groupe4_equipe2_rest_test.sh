@@ -17,7 +17,7 @@ echo
 echo "[TEST] POST (setName beer)"
 if [ "$(curl -X POST "$BEER_API_URL/setName/260" -H "Content-Type: application/json" -d "{\"name\":\"TEST\"}" -w '%{http_code}\n' -s)" == "200" ]; then echo "[SUCCESS] http_code=200"; fi
 echo "[TEST] POST (setAlcoholContent beer)"
-if [ "$(curl -X POST "$BEER_API_URL/setAlcoholContent/260"-H "Content-Type: application/json" -d "{\"alcohol\":\"6.00\"}" -w '%{http_code}\n' -s)" == "200" ]; then echo "[SUCCESS] http_code=200"; fi
+if [ "$(curl -X POST "$BEER_API_URL/setAlcoholContent/260" -H "Content-Type: application/json" -d "{\"alcohol\":\"6.00\"}" -w '%{http_code}\n' -s)" == "200" ]; then echo "[SUCCESS] http_code=200"; fi
 echo "[TEST] POST (setBrewer beer)"
 if [ "$(curl -X POST "$BEER_API_URL/setBrewer/260" -H "Content-Type: application/json" -d "{\"brewer\":\"Brewer TEST\"}" -w '%{http_code}\n' -s)" == "200" ]; then echo "[SUCCESS] http_code=200"; fi
 echo "[TEST] POST (setCountry beer)"
