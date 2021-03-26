@@ -137,14 +137,13 @@ describe("[TEST] GET (above alcohol content)", () => {
 
 // TEST if adding a beer works
 describe("[TEST] PUT (add beer)", () => {
-    it("id: 154, name: Leffe, alcohol: 5.15, brewer: Abbaye of Leffe, country: Germany", (done) => {
+    it("name: Leffe, alcohol: 5.15, brewer: Abbaye of Leffe, country: Germany", (done) => {
         chai.request(app)
             .put("/api/beer/addBeer")
-            .send({id: 154, name: 'Leffe', alcohol: 5.15, brewer: 'Abbaye of Leffe', country: 'Germany'})
+            .send({name: 'Leffe', alcohol: 5.15, brewer: 'Abbaye of Leffe', country: 'Germany'})
             .end(((err, res) => {
                 res.should.have.status(201);
                 res.body.should.be.a('Object');
-                res.body.should.have.property('id', 154);
                 res.body.should.have.property('name', "Leffe");
                 res.body.should.have.property('alcohol').eq(5.15);
                 res.body.should.have.property('brewer', "Abbaye of Leffe");
@@ -171,10 +170,11 @@ describe("[TEST] POST (set name)", () => {
     it("name: Leffe", (done) => {
         chai.request(app)
             .post("/api/beer/setName/154")
+            .set('content-type', 'application/json')
             .send({name: "Leffe"})
             .end(((err, res) => {
                 res.should.have.status(200);
-                // res.body.should.have.property('name', "Leffe");
+                res.body.should.have.property('name', "Leffe");
                 done();
             }));
     });

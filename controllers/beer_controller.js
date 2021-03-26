@@ -53,7 +53,6 @@ exports.getAboveAlcoholContent = (req, res) => {
 // PUT add a beer with attributes
 exports.addBeer = (req, res) => {
     Beer.create({
-        id: req.body.id,
         name: req.body.name,
         alcohol: req.body.alcohol,
         brewer: req.body.brewer,
@@ -83,10 +82,13 @@ exports.deleteBeer = (req, res) => {
 
 // SET the name of the beer with the given id
 exports.setName = (req, res) => {
-    Beer.findOne(req.query.id)
+    Beer.findOne({where: {id: id}})
         .then(beer => {
-            beer.name = req.body.name
-            beer.save().then(() => res.status(200).json())
+            beer.update({name: req.body.name}, {
+                where: {name: req.body.name}
+            }).then(beer => {
+                res.status(200).json()
+            })
         })
         .catch(err => {
             if (err) {
