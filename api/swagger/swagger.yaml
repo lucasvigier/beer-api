@@ -2,12 +2,750 @@ swagger: "2.0"
 info:
   version: "1.0.0"
   title: BEER API
+  description: Documentation 
 host: localhost:3000
 basePath: /
-schemes:
-  -http
 consumes:
   - application/json
 produces:
   - application/json
 paths:
+  / :
+    get:
+       description: Fonction qui récupère toutes les bières.
+       summary: getAll
+       operationId: getAll
+       parameters:
+        - name: beer
+          in: query
+          schema:
+            type: object
+       responses: 
+        "200":
+          description: Success
+          schema:
+            type: Array
+            properties:
+              beer:
+                type: Object
+        "500":
+          description: Server Error
+          schema:
+            type: undefined
+            
+  /beer/{id} :   
+    get:
+           description: Fonction qui récupère une bière grâce à l'Id.
+           summary: getById
+           operationId: getById
+           parameters:
+            - name: breweries_id
+              in: query
+              schema:
+                type: number
+            - name: name
+              in: query
+              schema:
+                type: string
+            - name: alcohol
+              in: query
+              schema:
+                type: int
+            - name: category
+              in: query
+              schema:
+                type: string
+            - name: brewer
+              in: query
+              schema:
+                type: string
+            - name: address
+              in: query
+              schema:
+                type: string
+            - name: city
+              in: query
+              schema:
+                type: string
+            - name: state
+              in: query
+              schema:
+                type: string
+            - name: country
+              in: query
+              schema:
+                type: string
+            - name: createdAt
+              in: query
+              schema:
+                type: null
+            - name: updatedAt
+              in: query
+              schema:
+                type: null
+           responses: 
+            "200":
+              description: Success
+              schema:
+                type: Array
+                properties:
+                  beer:
+                    type: Object
+            "500":
+              description: Server Error
+              schema:
+                type: undefined
+                
+  /beer/name?name={string} :   
+    get:
+           description: Fonction qui récupère une bière grâce à son nom.
+           summary: getByName
+           operationId: getByName
+           parameters:
+            - name: breweries_id
+              in: query
+              schema:
+                type: number
+            - name: name
+              required: true
+              in: query
+              schema:
+                type: string
+            - name: alcohol
+              in: query
+              schema:
+                type: int
+            - name: category
+              in: query
+              schema:
+                type: string
+            - name: brewer
+              in: query
+              schema:
+                type: string
+            - name: address
+              in: query
+              schema:
+                type: string
+            - name: city
+              in: query
+              schema:
+                type: string
+            - name: state
+              in: query
+              schema:
+                type: string
+            - name: country
+              in: query
+              schema:
+                type: string
+            - name: createdAt
+              in: query
+              schema:
+                type: null
+            - name: updatedAt
+              in: query
+              schema:
+                type: null
+           responses: 
+            "200":
+              description: Success
+              schema:
+                type: Array
+                properties:
+                  beer:
+                    type: Object
+            "500":
+              description: Server Error
+              schema:
+                type: undefined
+
+  /beer/brewer?brewer={string} :   
+    get:
+           description: Fonction qui récupère toutes les bières d'une brasserie.
+           summary: getByBrewerName
+           operationId: getByBrewerName
+           parameters:
+            - name: breweries_id
+              in: query
+              schema:
+                type: number
+            - name: name
+              in: query
+              schema:
+                type: string
+            - name: alcohol
+              in: query
+              schema:
+                type: int
+            - name: category
+              in: query
+              schema:
+                type: string
+            - name: brewer
+              required: true
+              in: query
+              schema:
+                type: string
+            - name: address
+              in: query
+              schema:
+                type: string
+            - name: city
+              in: query
+              schema:
+                type: string
+            - name: state
+              in: query
+              schema:
+                type: string
+            - name: country
+              in: query
+              schema:
+                type: string
+            - name: createdAt
+              in: query
+              schema:
+                type: null
+            - name: updatedAt
+              in: query
+              schema:
+                type: null
+           responses: 
+            "200":
+              description: Success
+              schema:
+                type: Array
+                properties:
+                  beer:
+                    type: Object
+            "500":
+              description: Server Error
+              schema:
+                type: undefined
+                
+  /beer/country?countryr={string} :   
+    get:
+           description: Fonction qui récupère toutes les bières d'un pays.
+           summary: getByCountry
+           operationId: getByCountry
+           parameters:
+            - name: breweries_id
+              in: query
+              schema:
+                type: number
+            - name: name
+              in: query
+              schema:
+                type: string
+            - name: alcohol
+              in: query
+              schema:
+                type: int
+            - name: category
+              in: query
+              schema:
+                type: string
+            - name: brewer
+              in: query
+              schema:
+                type: string
+            - name: address
+              in: query
+              schema:
+                type: string
+            - name: city
+              in: query
+              schema:
+                type: string
+            - name: state
+              in: query
+              schema:
+                type: string
+            - name: country
+              required: true
+              in: query
+              schema:
+                type: string
+            - name: createdAt
+              in: query
+              schema:
+                type: null
+            - name: updatedAt
+              in: query
+              schema:
+                type: null
+           responses: 
+            "200":
+              description: Success
+              schema:
+                type: Array
+                properties:
+                  beer:
+                    type: Object
+            "500":
+              description: Server Error
+              schema:
+                type: undefined
+                
+  /beer/underAlcoholContent?alcohol={number} :   
+    get:
+           description: Fonction qui récupère une ou plusieurs bières si le degré d'alcool est inférieur à un certains taux.
+           summary: getUnderAlcoholContent
+           operationId: getUnderAlcoholContent
+           parameters:
+            - name: breweries_id
+              in: query
+              schema:
+                type: number
+            - name: name
+              in: query
+              schema:
+                type: string
+            - name: alcohol
+              required: true
+              in: query
+              schema:
+                type: int
+            - name: category
+              in: query
+              schema:
+                type: string
+            - name: brewer
+              in: query
+              schema:
+                type: string
+            - name: address
+              in: query
+              schema:
+                type: string
+            - name: city
+              in: query
+              schema:
+                type: string
+            - name: state
+              in: query
+              schema:
+                type: string
+            - name: country
+              in: query
+              schema:
+                type: string
+            - name: createdAt
+              in: query
+              schema:
+                type: null
+            - name: updatedAt
+              in: query
+              schema:
+                type: null
+           responses: 
+            "200":
+              description: Success
+              schema:
+                type: Array
+                properties:
+                  beer:
+                    type: Object
+            "500":
+              description: Server Error
+              schema:
+                type: undefined
+                
+  /beer/aboveAlcoholContent?alcohol={number} :   
+    get:
+           description: Fonction qui récupère une ou plusieurs bières si le degré d'alcool est supérieur à un certains taux.
+           summary: getAboveAlcoholContent
+           operationId: getAboveAlcoholContent
+           parameters:
+            - name: breweries_id
+              in: query
+              schema:
+                type: number
+            - name: name
+              in: query
+              schema:
+                type: string
+            - name: alcohol
+              required: true
+              in: query
+              schema:
+                type: int
+            - name: category
+              in: query
+              schema:
+                type: string
+            - name: brewer
+              in: query
+              schema:
+                type: string
+            - name: address
+              in: query
+              schema:
+                type: string
+            - name: city
+              in: query
+              schema:
+                type: string
+            - name: state
+              in: query
+              schema:
+                type: string
+            - name: country
+              in: query
+              schema:
+                type: string
+            - name: createdAt
+              in: query
+              schema:
+                type: null
+            - name: updatedAt
+              in: query
+              schema:
+                type: null
+           responses: 
+            "200":
+              description: Success
+              schema:
+                type: Array
+                properties:
+                  beer:
+                    type: Object
+            "500":
+              description: Server Error
+              schema:
+                type: undefined
+                
+  /beer/addBeer?name={string}&alcohol={number}&brewer={string}&country={string} :   
+    put:
+           description: Fonction qui ajoute une bière à la base de données.
+           summary: addBeer
+           operationId: addBeer
+           parameters:
+            - name: breweries_id
+              in: query
+              schema:
+                type: number
+            - name: name
+              in: query
+              schema:
+                type: string
+            - name: alcohol
+              in: query
+              schema:
+                type: int
+            - name: category
+              in: query
+              schema:
+                type: string
+            - name: brewer
+              in: query
+              schema:
+                type: string
+            - name: address
+              in: query
+              schema:
+                type: string
+            - name: city
+              in: query
+              schema:
+                type: string
+            - name: state
+              in: query
+              schema:
+                type: string
+            - name: country
+              in: query
+              schema:
+                type: string
+            - name: createdAt
+              in: query
+              schema:
+                type: null
+            - name: updatedAt
+              in: query
+              schema:
+                type: null
+           responses: 
+            "200":
+              description: Success
+              schema:
+                type: Array
+                properties:
+                  beer:
+                    type: Object
+            "500":
+              description: Server Error
+              schema:
+                type: undefined
+                
+  /beer/deleteBeer/{id} :   
+    delete:
+           description: Fonction qui supprime une bière de la base de données.
+           summary: deleteBeer
+           operationId: deleteBeer
+           responses: 
+            "200":
+              description: Success
+              schema:
+                type: undefined
+            "500":
+              description: Server Error
+              schema:
+                type: undefined
+                
+  /beer/setName/{id} :   
+    set:
+           description: Fonction qui change le nom d'une bière.
+           summary: setName
+           operationId: setName
+           parameters:
+            - name: breweries_id
+              in: query
+              schema:
+                type: number
+            - name: name
+              in: query
+              schema:
+                type: string
+            - name: alcohol
+              required: true
+              in: query
+              schema:
+                type: int
+            - name: category
+              in: query
+              schema:
+                type: string
+            - name: brewer
+              in: query
+              schema:
+                type: string
+            - name: address
+              in: query
+              schema:
+                type: string
+            - name: city
+              in: query
+              schema:
+                type: string
+            - name: state
+              in: query
+              schema:
+                type: string
+            - name: country
+              in: query
+              schema:
+                type: string
+            - name: createdAt
+              in: query
+              schema:
+                type: null
+            - name: updatedAt
+              in: query
+              schema:
+                type: null
+           responses: 
+            "200":
+              description: Success
+              schema:
+                type: Array
+                properties:
+                  beer:
+                    type: Object
+            "500":
+              description: Server Error
+              schema:
+                type: undefined
+                
+  /beer/setAlcoholContent/{id} :   
+    set:
+           description: Fonction qui change le taux d'alcool d'une bière.
+           summary: setAlcoholContent
+           operationId: setAlcoholContent
+           parameters:
+            - name: breweries_id
+              in: query
+              schema:
+                type: number
+            - name: name
+              in: query
+              schema:
+                type: string
+            - name: alcohol
+              required: true
+              in: query
+              schema:
+                type: int
+            - name: category
+              in: query
+              schema:
+                type: string
+            - name: brewer
+              in: query
+              schema:
+                type: string
+            - name: address
+              in: query
+              schema:
+                type: string
+            - name: city
+              in: query
+              schema:
+                type: string
+            - name: state
+              in: query
+              schema:
+                type: string
+            - name: country
+              in: query
+              schema:
+                type: string
+            - name: createdAt
+              in: query
+              schema:
+                type: null
+            - name: updatedAt
+              in: query
+              schema:
+                type: null
+           responses: 
+            "200":
+              description: Success
+              schema:
+                type: Array
+                properties:
+                  beer:
+                    type: Object
+            "500":
+              description: Server Error
+              schema:
+                type: undefined
+                
+  /beer/setBrewer/{id} :   
+    set:
+           description: Fonction qui change le nom de la brasserie d'une bière.
+           summary: setBrewer
+           operationId: setBrewer
+           parameters:
+            - name: breweries_id
+              in: query
+              schema:
+                type: number
+            - name: name
+              in: query
+              schema:
+                type: string
+            - name: alcohol
+              required: true
+              in: query
+              schema:
+                type: int
+            - name: category
+              in: query
+              schema:
+                type: string
+            - name: brewer
+              in: query
+              schema:
+                type: string
+            - name: address
+              in: query
+              schema:
+                type: string
+            - name: city
+              in: query
+              schema:
+                type: string
+            - name: state
+              in: query
+              schema:
+                type: string
+            - name: country
+              in: query
+              schema:
+                type: string
+            - name: createdAt
+              in: query
+              schema:
+                type: null
+            - name: updatedAt
+              in: query
+              schema:
+                type: null
+           responses: 
+            "200":
+              description: Success
+              schema:
+                type: Array
+                properties:
+                  beer:
+                    type: Object
+            "500":
+              description: Server Error
+              schema:
+                type: undefined
+                
+  /beer/setCountry/{id} :   
+    set:
+           description: Fonction qui change le pays d'une bière.
+           summary: setCountry
+           operationId: setCountry
+           parameters:
+            - name: breweries_id
+              in: query
+              schema:
+                type: number
+            - name: name
+              in: query
+              schema:
+                type: string
+            - name: alcohol
+              required: true
+              in: query
+              schema:
+                type: int
+            - name: category
+              in: query
+              schema:
+                type: string
+            - name: brewer
+              in: query
+              schema:
+                type: string
+            - name: address
+              in: query
+              schema:
+                type: string
+            - name: city
+              in: query
+              schema:
+                type: string
+            - name: state
+              in: query
+              schema:
+                type: string
+            - name: country
+              in: query
+              schema:
+                type: string
+            - name: createdAt
+              in: query
+              schema:
+                type: null
+            - name: updatedAt
+              in: query
+              schema:
+                type: null
+           responses: 
+            "200":
+              description: Success
+              schema:
+                type: Array
+                properties:
+                  beer:
+                    type: Object
+            "500":
+              description: Server Error
+              schema:
+                type: undefined
