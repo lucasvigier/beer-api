@@ -3,7 +3,7 @@ Beer API REST using Express, NodeJS, Sequelize
 
 ## Prerequisites 
 - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-- [nodeJS](https://github.com/nodejs/node)
+- [nodejs](https://github.com/nodejs/node)
 - [npm](https://github.com/npm)
 
 ## Serve locally the API
