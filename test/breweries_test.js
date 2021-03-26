@@ -28,7 +28,7 @@ describe("[TEST] GET (breweries)", () => {
 });
 
 // TEST if getting the breweries with a specific id works
-describe("[TEST] GET (id)", () => {
+describe("[TEST] GET (breweries id)", () => {
     it("id: 215", (done) => {
         chai.request(app)
             .get("/api/breweries/215")
@@ -43,7 +43,7 @@ describe("[TEST] GET (id)", () => {
 });
 
 // TEST if getting the breweries with a specific name works
-describe("[TEST] GET (name)", () => {
+describe("[TEST] GET (breweries name)", () => {
     it("name: Alameda Brewhouse", (done) => {
         chai.request(app)
             .get("/api/breweries/name?breweries=Alameda Brewhouse")
@@ -58,7 +58,7 @@ describe("[TEST] GET (name)", () => {
 });
 
 // TEST if getting all the breweries of a specific country works
-describe("[TEST] GET (country)", () => {
+describe("[TEST] GET (breweries country)", () => {
     it("country: Belgium", (done) => {
         chai.request(app)
             .get("/api/breweries/country?country=Belgium")
