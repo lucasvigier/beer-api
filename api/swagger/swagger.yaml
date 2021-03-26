@@ -2,7 +2,7 @@ swagger: "2.0"
 info:
   version: "1.0.0"
   title: BEER API
-  description: Documentation 
+  description: Documentation de l'API de Lucas et Dimitri
 host: localhost:3000
 basePath: /
 consumes:
