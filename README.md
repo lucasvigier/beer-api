@@ -22,12 +22,12 @@ $ npm install
 
 3. Then, you can run the server with the following command
 ```
-$ npm start server
+$ npm start
 ```
 
 4. You can also run the tests
 ```
-$ npm run tests
+$ npm test
 ```
 
 You can now access to the API at `localhost:3000/api/beer`
