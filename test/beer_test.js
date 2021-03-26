@@ -136,25 +136,6 @@ describe("[TEST] GET (above alcohol content)", () => {
     });
 });
 
-// TEST if adding a beer works
-describe("[TEST] PUT (add beer)", () => {
-    it("id: 154, name: Leffe, alcohol: 5.15, brewer: Abbaye of Leffe, country: Germany", (done) => {
-        chai.request(app)
-            .put("/api/beer/addBeer")
-            .send({id: 154, name: 'Leffe', alcohol: 5.15, brewer: 'Abbaye of Leffe', country: 'Germany'})
-            .end(((err, res) => {
-                res.should.have.status(201);
-                res.body.should.be.a('Object');
-                res.body.should.have.property('id', 154);
-                res.body.should.have.property('name', "Leffe");
-                res.body.should.have.property('alcohol').eq(5.15);
-                res.body.should.have.property('brewer', "Abbaye of Leffe");
-                res.body.should.have.property('country', "Germany");
-                done();
-            }));
-    });
-});
-
 // TEST if deleting a beer works
 describe("[TEST] DELETE (delete beer)", () => {
     it("id: 154", (done) => {

@@ -24,8 +24,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/beer', beerRouter);
 app.use('/api/breweries', breweriesRouter);
 
-app.use('/', swaggerUi.serve);
-app.get('/', swaggerUi.setup(swaggerDocument));
+app.use('/api-doc', swaggerUi.serve);
+app.get('/api-doc', swaggerUi.setup(swaggerDocument));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

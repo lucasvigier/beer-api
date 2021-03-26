@@ -2,9 +2,9 @@ swagger: "2.0"
 info:
   version: "1.0.0"
   title: BEER API
-  description: Documentation 
+  description: Here you can find all the documentation for the differents requests you can make to the API.
 host: localhost:3000
-basePath: /
+basePath: /api-doc
 consumes:
   - application/json
 produces:
@@ -495,7 +495,7 @@ paths:
                 type: undefined
                 
   /beer/setName/{id} :   
-    set:
+    post:
            description: Fonction qui change le nom d'une bière.
            summary: setName
            operationId: setName
@@ -559,7 +559,7 @@ paths:
                 type: undefined
                 
   /beer/setAlcoholContent/{id} :   
-    set:
+    post:
            description: Fonction qui change le taux d'alcool d'une bière.
            summary: setAlcoholContent
            operationId: setAlcoholContent
@@ -623,7 +623,7 @@ paths:
                 type: undefined
                 
   /beer/setBrewer/{id} :   
-    set:
+    post:
            description: Fonction qui change le nom de la brasserie d'une bière.
            summary: setBrewer
            operationId: setBrewer
@@ -687,7 +687,7 @@ paths:
                 type: undefined
                 
   /beer/setCountry/{id} :   
-    set:
+    post:
            description: Fonction qui change le pays d'une bière.
            summary: setCountry
            operationId: setCountry
