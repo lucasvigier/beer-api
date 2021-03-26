@@ -5,6 +5,9 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const beerRouter = require('./routes/beer');
 const breweriesRouter = require('./routes/breweries');
+const swaggerUi = require('swagger-ui-express');
+const yaml = require('yamljs');
+const swaggerDocument = yaml.load('./api/swagger/swagger.yaml');
 
 const app = express();
 
@@ -20,6 +23,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/beer', beerRouter);
 app.use('/api/breweries', breweriesRouter);
+
+app.use('/api/swagger/', swaggerUi.serve);
+app.get('/api/swagger/', swaggerUi.setup(swaggerDocument));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

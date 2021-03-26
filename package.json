@@ -10,13 +10,17 @@
     "chai": "^4.3.4",
     "chai-http": "^4.3.0",
     "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
+    "debug": "^2.6.9",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "mocha": "^8.3.2",
     "morgan": "~1.9.1",
     "pug": "2.0.0-beta11",
-    "sqlite3": "^5.0.2"
+    "sqlite3": "^5.0.2",
+    "swagger": "^0.7.5",
+    "swagger-tools": "^0.10.4",
+    "swagger-ui-express": "^4.1.6",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "sequelize": "^6.6.2"
