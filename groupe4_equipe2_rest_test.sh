@@ -27,5 +27,10 @@ if [ "$(curl -X POST "$BEER_API_URL/setCountry/260" -H "Content-Type: applicatio
 
 echo
 # [PUT] tests for the beer API requests
-echo "[TEST] POST (addBeer beer)"
-if [ "$(curl -X PUT "$BEER_API_URL/addBeer" -H "Content-Type: application/json" -d "{\"name\":\"TEST\",\"alcohol\":\"6.50\",\"brewer\":\"Brewer TEST\", \"country\":\"Country TEST\"}" -w '%{http_code}\n' -s)" == "200" ]; then echo "[SUCCESS] http_code=200"; fi
+echo "[TEST] PUT (addBeer beer)"
+if [ "$(curl -X PUT "$BEER_API_URL/addBeer" -H "Content-Type: application/json" -d '{\"name\":\"TEST\", \"alcohol\":\"6.15\, \"brewer\":\"Brewer%20TEST\"}' -w '%{http_code}\n' -s)" == "200" ]; then echo "[SUCCESS] http_code=200"; fi
+
+echo
+# [DELETE] tests for the beer API requests
+echo "[TEST] DELETE (deleteBeer beer)"
+if [ "$(curl -X DELETE "$BEER_API_URL/deleteBeer/5000" -w '%{http_code}\n' -s)" == "200" ]; then echo "[SUCCESS] http_code=200"; fi
