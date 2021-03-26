@@ -29,3 +29,9 @@ $ npm start server
 ```
 $ npm run tests
 ```
+
+You can now access to the API at `localhost:3000/api/beer`
+
+## Documentation
+
+You can access to the documentation of the API at `localhost:3000/api-doc`
