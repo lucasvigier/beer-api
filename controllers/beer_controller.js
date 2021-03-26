@@ -82,7 +82,7 @@ exports.deleteBeer = (req, res) => {
 
 // SET the name of the beer with the given id
 exports.setName = (req, res) => {
-    Beer.findOne({where: {id: id}})
+    Beer.findOne({where: {id: req.params.id}})
         .then(beer => {
             beer.update({name: req.body.name}, {
                 where: {name: req.body.name}
@@ -101,10 +101,13 @@ exports.setName = (req, res) => {
 
 // SET the alcohol content of the beer with the given id
 exports.setAlcoholContent = (req, res) => {
-    Beer.findOne(req.query.id)
+    Beer.findOne({where: {id: req.params.id}})
         .then(beer => {
-            beer.alcohol = req.body.alcohol
-            beer.save().then(() => res.status(200).json())
+            beer.update({alcohol: req.body.alcohol}, {
+                where: {alcohol: req.body.alcohol}
+            }).then(beer => {
+                res.status(200).json()
+            })
         })
         .catch(err => {
             if (err) {
@@ -117,10 +120,13 @@ exports.setAlcoholContent = (req, res) => {
 
 // SET the brewer of the beer with the given id
 exports.setBrewer = (req, res) => {
-    Beer.findOne(req.query.id)
+    Beer.findOne({where: {id: req.params.id}})
         .then(beer => {
-            beer.brewer = req.body.brewer
-            beer.save().then(() => res.status(200).json())
+            beer.update({brewer: req.body.brewer}, {
+                where: {brewer: req.body.brewer}
+            }).then(beer => {
+                res.status(200).json()
+            })
         })
         .catch(err => {
             if (err) {
@@ -133,10 +139,13 @@ exports.setBrewer = (req, res) => {
 
 // SET the country of the beer with the given id
 exports.setCountry = (req, res) => {
-    Beer.findOne(req.query.id)
+    Beer.findOne({where: {id: req.params.id}})
         .then(beer => {
-            beer.country = req.body.country
-            beer.save().then(() => res.status(200).json())
+            beer.update({country: req.body.country}, {
+                where: {country: req.body.country}
+            }).then(beer => {
+                res.status(200).json()
+            })
         })
         .catch(err => {
             if (err) {
