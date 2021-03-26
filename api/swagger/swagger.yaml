@@ -224,7 +224,7 @@ paths:
               schema:
                 type: undefined
                 
-  /beer/country?countryr={string} :   
+  /beer/country?country={string} :
     get:
            description: Fonction qui récupère toutes les bières d'un pays.
            summary: getByCountry
