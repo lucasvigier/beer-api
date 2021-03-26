@@ -16,7 +16,9 @@
     "mocha": "^8.3.2",
     "morgan": "~1.9.1",
     "pug": "2.0.0-beta11",
-    "sqlite3": "^5.0.2"
+    "sqlite3": "^5.0.2",
+    "swagger-ui-express": "^4.1.6",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "sequelize": "^6.6.2"
