@@ -1,4 +1,4 @@
-# Beer-API
+# Beer-API 🍺
 Beer API REST using Express, NodeJS, Sequelize
 
 ## Prerequisites 
