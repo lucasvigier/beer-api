@@ -80,3 +80,67 @@ exports.deleteBeer = (req, res) => {
             }
         })
 }
+
+// SET the name of the beer with the given id
+exports.setName = (req, res) => {
+    Beer.findOne(req.query.id)
+        .then(beer => {
+            beer.name = req.body.name
+            beer.save().then(() => res.status(200).json())
+        })
+        .catch(err => {
+            if (err) {
+                res.status(500).json(err)
+            } else {
+                res.status(404).json({error: '[ERROR]: Beer not found'})
+            }
+        })
+}
+
+// SET the alcohol content of the beer with the given id
+exports.setAlcoholContent = (req, res) => {
+    Beer.findOne(req.query.id)
+        .then(beer => {
+            beer.alcohol = req.body.alcohol
+            beer.save().then(() => res.status(200).json())
+        })
+        .catch(err => {
+            if (err) {
+                res.status(500).json(err)
+            } else {
+                res.status(404).json({error: '[ERROR]: Beer not found'})
+            }
+        })
+}
+
+// SET the brewer of the beer with the given id
+exports.setBrewer = (req, res) => {
+    Beer.findOne(req.query.id)
+        .then(beer => {
+            beer.brewer = req.body.brewer
+            beer.save().then(() => res.status(200).json())
+        })
+        .catch(err => {
+            if (err) {
+                res.status(500).json(err)
+            } else {
+                res.status(404).json({error: '[ERROR]: Beer not found'})
+            }
+        })
+}
+
+// SET the country of the beer with the given id
+exports.setCountry = (req, res) => {
+    Beer.findOne(req.query.id)
+        .then(beer => {
+            beer.country = req.body.country
+            beer.save().then(() => res.status(200).json())
+        })
+        .catch(err => {
+            if (err) {
+                res.status(500).json(err)
+            } else {
+                res.status(404).json({error: '[ERROR]: Beer not found'})
+            }
+        })
+}

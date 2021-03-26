@@ -10,6 +10,12 @@ router.get('/country', beerController.getByCountry);
 router.get('/underAlcoholContent', beerController.getUnderAlcoholContent);
 router.get('/aboveAlcoholContent', beerController.getAboveAlcoholContent);
 
+/* POST beers methods routes. */
+router.post('/setName/:id', beerController.setName);
+router.post('/setAlcoholContent/:id', beerController.setAlcoholContent);
+router.post('/setBrewer/:id', beerController.setBrewer);
+router.post('/setCountry/:id', beerController.setCountry);
+
 /* PUT beers method route. */
 router.put('/addBeer', beerController.addBeer);
 
